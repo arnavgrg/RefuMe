@@ -1,0 +1,14 @@
+<% provide(:title, "Show Match") %>
+<p id="notice"><%= notice %></p>
+
+<h2>Show Matches </h2>
+<%= "This is " + @user.name + ", who is a "%>
+<% if @user.role %>
+  <%= @user.role + "." %>
+<% else %>
+  <%= "neither role." %>
+<% end %>
+
+<br>
+<!-- < %= link_to 'Edit', edit_match_path(@match) %> | -->
+<%= link_to 'Back', matches_path %>

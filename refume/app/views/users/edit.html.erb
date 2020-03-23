@@ -1,0 +1,47 @@
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages' %>
+
+      <div class="pic">
+        <%= gravatar_for @user %>
+        <a href="http://gravatar.com/emails" target="_blank">change</a>
+      </div>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :age %>
+      <%= f.number_field :age, class: 'form-control' %>
+
+      <%= f.label :zipcode %>
+      <%= f.number_field :zipcode, class: 'form-control' %>
+
+      <%= f.label :country %>
+      <%= f.text_field :country, class: 'form-control' %>
+
+      <%= f.label :language %>
+      <%= f.text_field :language, class: 'form-control' %>
+
+      <%= f.label :goals %>
+      <%= f.text_area :goals, class: 'form-control' %>
+
+      <%= f.label :bio %>
+      <%= f.text_area :bio, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

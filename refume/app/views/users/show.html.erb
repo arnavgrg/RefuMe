@@ -1,0 +1,66 @@
+<% provide(:title, @user.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+      <% if @user.role %>
+        <%= @user.role %>
+      <% else %>
+        <%= "Regular User" %>
+      <% end %>
+    </section>
+  </aside>
+</div>
+
+<div id="rcorner">
+  <h1 style="text-align:center">
+    <span style="font-family:Helvetica; font-size:30px" class="text-white" data-placement="right">
+      <% if @user.role == 'Mentor' %>
+        <%= "Matched Mentees" %>
+      <% else %>
+        <%= "Matched Mentors "%>
+      <% end %>
+    </span>
+  </h1>
+
+  <table class="table table-hover table-bordered table-sm" style="width:600px;" align="center">
+    <thead>
+      <tr>
+        <th style="text-align:center; width:100px; background-color:#EDE574; color:grey">Name</th>
+        <th style="text-align:center; background-color:#F7DB4F; color:grey">Email</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% if @user.role == "Mentor" %>
+        <% @mentees.each do |mentee| %>
+          <tr>
+            <td>
+              <%= mentee.name%>
+            </td>
+            <td>
+              <%= mail_to mentee.email, mentee.email %>
+            </td>
+          </tr>
+        <% end %>
+
+      <% elsif @user.role== "Mentee" %>
+          <% @mentors.each do |mentor| %>
+          <tr>
+            <td style="width:1px; white-space:nowrap; padding: 10px; text-align:center; font-weight:bold;" class="align-middle">
+              <%= mentor.name%>
+            </td>
+            <td style="width:1px; white-space:nowrap; padding: 15px; text-align:center;">
+              <%= mail_to mentor.email, mentor.email %>
+            </td>
+          </tr>
+          <% end %>
+      <% else %>
+        <%= "There is no matches for this user yet." %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

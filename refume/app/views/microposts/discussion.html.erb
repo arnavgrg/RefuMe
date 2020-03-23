@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+    <head>
+        <title> RefuMe | Discussion </title>
+    </head>
+    <body style="font-family: 'Noto Sans', sans-serif; background-image: linear-gradient(to right top, #b32576, #af4697, #a661b2, #9b78c9, #8f8ed9, #819fe7, #73aff2, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+                 padding: 4em 6em;">
+        <h1 style="text-align: center;"> Discussion Forum </h1></br>
+        <div class="card" style="width: 18rem; margin: auto; width: 50%;">
+            <div class="card-body">
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="category"><strong>Choose Forum Category</strong></label>
+                        <select id="category">
+                            <option value="housing">Housing</option>
+                            <option value="education">Education</option>
+                            <option value="transportation">Transportation</option>
+                            <option value="citizenship">Citizenship</option>
+                            <option value="travel">Travel</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="career">Career</option>
+                        </select>
+                        <br/>
+                    </div>
+                       <%= form_for(@micropost) do |f| %>
+                          <%= render 'shared/error_messages' %>
+
+                          <%= f.label :category_id %>
+                          <%= f.text_field :category_id, class: 'form-control' %>
+
+                          <%= f.label :content %>
+                          <%= f.text_field :content, class: 'form-control' %>
+
+                          <%= f.submit "Create post", class: "btn btn-primary" %>
+                      <% end %>
+                </form>
+            </div>
+        </div>
+    <% Micropost.all.entries.reverse.each do | entry | %>
+        <% if not entry.nil? %>
+            <div class="card" style="width: 18rem; margin: auto; width: 50%;">
+                <div class="card-body">
+                    <% entry.category_id %>
+                    <% entry.text %>
+                </div>
+            </div>
+        <% end %>
+    <% end %>
+    </body>
+</html>
