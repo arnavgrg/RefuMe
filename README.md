@@ -1,2 +1,22 @@
-# RefuMe
-A Ruby on Rails web application for immigrants to be matched with other immigrants based on their background, languages and interests, as well a Reddit-styled discussion forum to encourage the growth of a strong immigrant community.
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Link: https://evening-fortress-23130.herokuapp.com
+
+## Collaborators
+
+- Arnav Garg: @arnavgrg
+- Stewart Dulaney: @sdulaney
+- Jason Mally: @jasonmally
+- Howard Tan: @wahjay
+- Pariya Samandi: @Psamandi
+
+## How to run the application locally:
+- Clone this repo
+- `cd [path to this repo]/refume`
+- `bundle install`
+- `rails db:migrate`
+- `rails server`
+- Go to http://localhost:3000/
